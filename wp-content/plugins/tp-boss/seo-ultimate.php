@@ -1,0 +1,88 @@
+<?php
+/*
+Plugin Name: TPBoss (TeamPlatino.com)
+Plugin URI: http://www.seodesignsolutions.com/wordpress-seo/
+Description: <strong>Modificación</strong> del plugin <code>SEO Ultimate</code> (original de SEO Design Solutions) para los alumnos de <a href="http://vayaseo.com/teamplatino">TeamPlatino</a>  y suscriptores de <a href="http://vayaseo.com">vayaSEO.com</a> . <strong>NUNCA</strong> actualices la versión del plugin ya que perderás todos los cambios que hayas realizado en tu sitio. <em>Wordpress entiende que este plugin sigue siendo original, así que te pedirá una actualización en el caso de que la publique el creador.</em>
+Version: 0.1
+Author: vayaSEO
+Author URI: http://vayaseo.com/
+Text Domain: vayaSEO
+*/
+
+/**
+ * The main SEO Ultimate plugin file.
+ * @package SeoUltimate
+ * @version 7.6.5.8
+ * @link http://www.seodesignsolutions.com/wordpress-seo/ SEO Ultimate Homepage
+ */
+
+/*
+Copyright (c) 2009-2015 SEO Design Solutions
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+if (!defined('ABSPATH')) {
+	header('Status: 403 Forbidden');
+	header('HTTP/1.1 403 Forbidden');
+	die();
+}
+
+/********** CONSTANTS **********/
+
+//The bare minimum version of WordPress required to run without generating a fatal error.
+//SEO Ultimate will refuse to run if activated on a lower version of WP.
+define('SU_MINIMUM_WP_VER', '3.9');
+
+//Reading plugin info from constants is faster than trying to parse it from the header above.
+define('SU_PLUGIN_NAME', 'TPBoss');
+define('SU_PLUGIN_URI', 'http://teamplatino.com');
+define('SU_VERSION', '0.1');
+define('SU_AUTHOR', 'vayaSEO');
+define('SU_AUTHOR_URI', 'http://vayaseo.com');
+define('SU_USER_AGENT', 'TPBoss/0.1');
+
+/********** INCLUDES **********/
+
+//Libraries
+include 'includes/jlfunctions/jlfunctions.php';
+include 'includes/jlwp/jlwp.php';
+
+//Plugin files
+include 'plugin/su-constants.php';
+include 'plugin/su-functions.php';
+include 'plugin/class.seo-ultimate.php';
+
+//Module files
+include 'modules/class.su-module.php';
+include 'modules/class.su-importmodule.php';
+
+
+/********** VERSION CHECK & INITIALIZATION **********/
+
+global $wp_version;
+if (version_compare($wp_version, SU_MINIMUM_WP_VER, '>=')) {
+	global $seo_ultimate;
+	$seo_ultimate = new SEO_Ultimate(__FILE__);
+} else {
+	add_action('admin_notices', 'su_wp_incompat_notice');
+}
+
+function su_wp_incompat_notice() {
+	echo '<div class="error"><p>';
+	printf(__('No actualices nunca a la versión superior ya que no existe. Wordpress entiende que este plugin sigue siendo el oficial/original de SEO Ultimate y en el caso de actualizar perderías todos los cambios de tu página web. Al ser una modificación no hay vulnerabilidades, no te preocupes.', 'seo-ultimate'), SU_MINIMUM_WP_VER);
+	echo "</p></div>\n";
+}
+
+?>

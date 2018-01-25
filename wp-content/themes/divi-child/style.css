@@ -1,0 +1,60 @@
+/* LICENSE & DETAILS
+==================================================
+
+	Theme Name: Divi Child
+	Theme URI: http://www.elegantthemes.com
+	Author: Woodemia
+	Author URI: woodemia.com
+	Template: Divi
+	Description: <strong>A Creative Multi-Purpose e-commerce WordPress Theme, Designed & Developed by ElegantThemes</strong> - <a href="http://www.elegantthemes.com">www.elegantthemes.com</a>.
+	Version: 1.20
+	License: GNU General Public License version 3.0
+	License URI: http://www.gnu.org/licenses/gpl-3.0.html
+	Tags: translation-ready, threaded-comments, theme-options, sticky-post, post-formats, full-width-template, flexible-header, featured-images, custom-menu, custom-header, custom-colors, custom-background, responsive-layout
+
+	All files, unless otherwise stated, are released under the GNU General Public License
+	version 3.0 (http://www.gnu.org/licenses/gpl-3.0.html)
+
+==================================================
+*/
+@import url("../Divi/style.css");
+
+/* General styling */
+span.icon_heart_alt:after{
+	content: "\e030";
+    	font-family: 'ETmodules';
+}
+
+h1.entry-title {
+display: none;
+}
+
+/* Containers */
+#main-content {
+	background-color: #fcfcfc;
+}
+/*Ajusta posición Logo*/
+.et_header_style_centered #main-header div#et-top-navigation {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+/* Footer Menu */
+#et-footer-nav {
+	background-color: rgb(76, 76, 76);
+}
+
+/* Center Footer Menu*/
+#footer-info.
+#footer-info a [
+float:none:
+text-align:center;
+}
+
+/*Elimina altura cabecera meú principal*/
+
+	.et_header_style_left .et-fixed-header #et-top-navigation,
+	.et_header_style_split .et-fixed-header #et-top-navigation {
+		padding-top: 0px;
+	}
